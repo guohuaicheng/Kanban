@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Kanban</title>
+    <link type="text/css" href="css/kanban.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../src/jquery-kanban.js"></script>
+    <script>
+        $(function() {
+            var options = {
+                itemClickFn: function(itemId) {
+                    alert(itemId)
+                },
+                removeItemFn: function(itemId, cb) {
+                    alert("removed: " + itemId);
+                    cb && cb();
+                },
+                itemAddFn: function(item, cb) {
+                  alert("add: " + item.id);
+                    cb && cb(item);
+                },
+                updateItemStatus: function(itemId, columnId) {
+                  alert("update: itemId: " + itemId + " columnId: " + columnId)
+                },
+                "columns": [
+                    {
+                        "hasNew": true,
+                        "id": "first",
+                        "name": "FF",
+                        "items": [
+                            {
+                                "id": "id-1",
+                                "name": "First-1"
+                            },
+                            {
+                                "id": "id-2",
+                                "name": "First-2"
+                            },
+                            {
+                                "id": "id-3",
+                                "name": "First-3"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "second",
+                        "name": "SC",
+                        "items": [
+                            {
+                                "id": "id-4",
+                                "name": "Second-2"
+                            },
+                            {
+                                "id": "id-5",
+                                "name": "Second-2"
+                            },
+                            {
+                                "id": "id-6",
+                                "name": "Second-3"
+                            }
+                        ]
+                    }
+                ]
+            };
+            var kanban = $("#kanban").kanban(options);
+
+
+            $(".add").click(function() {
+                kanban.appendWorkItem({
+                    columnId: "first",
+                    id: "xxx",
+                    name: "xxx"
+                });
+            })
+
+            $(".remove").click(function() {
+                kanban.removeWorkItem({
+                    columnId: "first",
+                    id: "xxx",
+                    name: "xxx"
+                });
+            })
+
+            $(".move").click(function() {
+                kanban.updateWorkItem({
+                    columnId: "second",
+                    id: "xxx",
+                    name: "xxx"
+                });
+            })
+
+        })
+    </script>
+</head>
+<body>
+<div id="kanban">
+</div>
+
+<button class="add"> 添加Item</button>
+<button class="move"> 移动Item</button>
+<button class="remove"> 删除</button>
+</body>
+</html>
