@@ -37,7 +37,7 @@
     border-right: none;
 }
 
-ul.tasks {
+ul.cards {
     list-style: none;
     margin: 0;
     min-height: 200px;
@@ -46,11 +46,11 @@ ul.tasks {
     padding: 10px;
 }
 
-ul.tasks li {
+ul.cards li {
     min-height: 80px;
 }
 
-ul.tasks li.drop-area {
+ul.cards li.drop-area {
     background-color: #aaa;
     border: solid 2px #ccc;
     border-radius: 3px;
@@ -58,7 +58,7 @@ ul.tasks li.drop-area {
     -webkit-border-radius: 3px;
 }
 
-.task {
+.card {
     margin: 5px 0px;
     background-color: #FFF;
     width: 260px;
@@ -73,16 +73,16 @@ ul.tasks li.drop-area {
     -webkit-border-radius: 3px;
 }
 
-.task .task-open {
+.card .card-open {
     float: right;
 }
 
-.column .item-create span {
+.column .card-create span {
     font-size: 30px;
     font-weight: bold;
 }
 
-.column .item-new {
+.column .card-new {
     display: none;
     height: 100px;
     border: 2px solid #FFF;
