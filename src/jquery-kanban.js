@@ -71,7 +71,9 @@
         }
 
         $(".ui-kanban .ui-sortable").sortable({
-          connectWith: [".ui-kanban .ui-sortable"], placeholder: "drop-area", items: 'li:not(.ui-state-disabled)'
+          connectWith: [".ui-kanban .ui-sortable"],
+          placeholder: "drop-area",
+          items: 'li:not(.ui-state-disabled)'
         });
       }
 
@@ -91,7 +93,10 @@
     _bindEvents: function() {
 
       $(".ui-kanban .ui-sortable").sortable({
-        connectWith: [".ui-kanban .ui-sortable"], placeholder: "drop-area", items: 'li:not(.ui-state-disabled)',cancel:".card-open"
+        connectWith: [".ui-kanban .ui-sortable"],
+        placeholder: "drop-area",
+        items: 'li:not(.ui-state-disabled)',
+        cancel: ".card-open"
       });
 
       this._sortReceive = this._bindMethod(this._sortReceive);
@@ -140,7 +145,7 @@
     _unbindEvents: function() {
       $(".ui-kanban .ui-sortable").off("sortreceive", this._sortReceive);
       $(".ui-kanban .ui-sortable .card .card-open").off("click", this._openCard);
-      if(this.newColumnId) {
+      if (this.newColumnId) {
         $("#" + this.newColumnId + " .card-create").off("click");
         $("#" + this.newColumnId + " .card-new #card-add").off("click");
         $("#" + this.newColumnId + " .card-new #card-cancel").off("click");
@@ -171,7 +176,7 @@
     },
 
     removeCard: function(card) {
-      var $card = this.cardContainers[card.columnId].find("#"+ card.id);
+      var $card = this.cardContainers[card.columnId].find("#" + card.id);
       if ($card) {
         if (typeof this.options.cardRemoveFn == "function") {
           this.options.cardRemoveFn(card.id, function() {
